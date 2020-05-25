@@ -7,8 +7,8 @@ class ProductsSchema extends Schema {
   up () {
     this.create('products', (table) => {
       table.increments()
-      table.string('name product', 35),notNullable()
-      table.integer('category').unsigned().references('id').inTable('category_products')
+      table.string('name_product', 35)
+      table.integer('category_id').unsigned().references('id').inTable('category_products')
       table.string('Description')
       table.timestamps()
     })
