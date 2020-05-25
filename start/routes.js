@@ -12,6 +12,7 @@
 | http://adonisjs.com/docs/4.1/routing
 |
 */
+const Database = use('Database')
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
@@ -29,4 +30,11 @@ Route.group(()=> {
   Route.post('users/regis', 'UserController.store');
   //Ruta del Login
   Route.post('users/login', 'UserController.login');
+  //Crea nva categoria
+  Route.post('newCategory', 'CategoryProductController.store');
+  Route.get('verus', 'CategoryProductController.index');
+
+  Route.get('/categorias', async () => {
+    return await Database.table('category_products').select('*')
+  })
 }).prefix('api/')
