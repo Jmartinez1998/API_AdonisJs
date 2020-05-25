@@ -4,6 +4,10 @@
 const Model = use('Model')
 
 class Product extends Model {
+    //relacion de producto con categoria
+    Categorias() {
+        return this.belongsTo('App/Models/CategoryProduct')
+    }
 }
 
 module.exports = Product
