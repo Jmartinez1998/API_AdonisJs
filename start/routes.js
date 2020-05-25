@@ -40,7 +40,7 @@ Route.group(()=> {
   //Agrega nmnvo producto
   Route.post('Newproducts', 'ProductController.store');
   //Muesta productos
-  Route.get('/productos', async () => {
+  Route.get('productos', async () => {
     return await Database.table('products').select('*')
   })
-}).prefix('api/')
+}).prefix('api/').middleware(['auth'])
