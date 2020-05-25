@@ -4,6 +4,13 @@
 const User =use('App/Models/User');
 
 class UserController {
+    // Usa AWJ Autenticacion retorna el Token
+    async login({ request, auth}) {
+        const { email, password} = request.all();
+        const tok = await auth.attempt(email, password);
+        return tok; 
+    };
+
     async store({ request }) {
         /*return {
             mensaje:"Cremos el user desde el controller!"
@@ -14,7 +21,7 @@ class UserController {
             password,
             username: email
         });
-        return user;
+        return this.login(...arguments);
     };
 }
 

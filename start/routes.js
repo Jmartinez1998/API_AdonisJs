@@ -27,4 +27,6 @@ Route.get('/pepe', () => {
 Route.group(()=> {
   // Ruta del registroo nvo usuario
   Route.post('users/regis', 'UserController.store');
+  //Ruta del Login
+  Route.post('users/login', 'UserController.login');
 }).prefix('api/')
