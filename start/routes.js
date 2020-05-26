@@ -35,6 +35,10 @@ Route.group(()=> {
   Route.post('newCategory', 'CategoryProductController.store');
   Route.get('verus', 'CategoryProductController.index');
 
+  
+  Route.post('newComment', 'ComentarioController.store');
+
+
   Route.get('/categorias', async () => {
     return await Database.table('category_products').select('*')
   })
@@ -43,5 +47,9 @@ Route.group(()=> {
   //Muesta productos
   Route.get('productos', async () => {
     return await Database.table('products').select('*')
+  })
+  //Muestra los comentarios
+  Route.get('comentarios', async () => {
+    return await Database.table('comentarios').select('*')
   })
 }).prefix('api/')
