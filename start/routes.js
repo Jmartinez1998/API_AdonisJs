@@ -28,6 +28,7 @@ Route.get('/pepe', () => {
 Route.group(()=> {
   // Ruta del registroo nvo usuario
   Route.post('users/regis', 'UserController.store');
+  Route.delete('users/delete/:id', 'UserController.destroy');
   //Ruta del Login
   Route.post('users/login', 'UserController.login');
   //Crea nva categoria
@@ -43,4 +44,4 @@ Route.group(()=> {
   Route.get('productos', async () => {
     return await Database.table('products').select('*')
   })
-}).prefix('api/').middleware(['auth'])
+}).prefix('api/')

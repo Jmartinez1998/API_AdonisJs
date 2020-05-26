@@ -10,7 +10,7 @@ class UserController {
         const tok = await auth.attempt(email, password);
         return tok; 
     };
-
+    //Crea nuevo usuario
     async store({ request }) {
         /*return {
             mensaje:"Cremos el user desde el controller!"
@@ -23,6 +23,15 @@ class UserController {
         });
         return this.login(...arguments);
     };
+    // Desrtoy userSelect
+    async destroy({response, params, auth}) {
+        const user = await auth.getUser()
+        if(user.id) {
+            //throw new UnauthorizedException();
+            await user.delete()
+            return {mensaje:"Usuario Eliminado satisfactoriamente!"}
+        }
+    }
 }
 
 module.exports = UserController
