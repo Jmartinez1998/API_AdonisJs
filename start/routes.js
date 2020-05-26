@@ -43,4 +43,4 @@ Route.group(()=> {
   Route.get('productos', async () => {
     return await Database.table('products').select('*')
   })
-}).prefix('api/').middleware(['auth'])
+}).prefix('api/')
