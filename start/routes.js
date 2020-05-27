@@ -34,10 +34,8 @@ Route.group(()=> {
   //Crea nva categoria
   Route.post('newCategory', 'CategoryProductController.store');
   Route.get('verus', 'CategoryProductController.index');
-
   
   Route.post('newComment', 'ComentarioController.store');
-
 
   Route.get('/categorias', async () => {
     return await Database.table('category_products').select('*')
@@ -52,4 +50,4 @@ Route.group(()=> {
   Route.get('comentarios', async () => {
     return await Database.table('comentarios').select('*')
   })
-}).prefix('api/')
+}).prefix('api/').middleware(['auth']);
