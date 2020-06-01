@@ -59,4 +59,13 @@ Route.group(()=> {
   Route.get('comentarios', async () => {
     return await Database.table('comentarios').select('*')
   })
-}).prefix('api/').middleware(['auth']);;
+}).prefix('api/').middleware(['auth']);;//eto chi
+
+//jesus Rutas we
+Route.group(()=>{
+  Route.post('New', 'PackController.Store')
+  Route.get('Take', 'PackController.getAllPack')
+  Route.put('Update', 'PackController.Update')
+  Route.delete('Delete', 'PackController.Delete')
+  
+}).prefix('Packs/').middleware(['auth']);

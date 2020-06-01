@@ -14,7 +14,7 @@ class PackController {
         return await Database.select('*').from('packs')
     }
 
-    async store({ request }) //rregtra
+    async Store({ request }) //rregtra
     {
         const { packagetype, description, cost, status } = request.all();
         console.log(packagetype, description, cost, status);
@@ -26,14 +26,14 @@ class PackController {
         });
         return Packs;
     };
-    async destroy({ response, params: id, }) //delete
+    async Delete({ response, params: id, }) //delete
     {
         const packs = await Packs.find(id)
         await packs.delete()
         return response.status(200).send({ message: 'Package removed' });
     }
 
-    async update({ params: { id }, request, response }) //update
+    async Update({ params: { id }, request, response }) //update
     {
         const { packagetype, description, cost, status } = request.all();
         const packs = await Database
