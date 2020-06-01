@@ -24,27 +24,31 @@ Route.get('/', () => {
 Route.get('/pepe', () => {
   return { greeting: 'Hello pepe in JSON' }
 })
+Route.post('users/login', 'UserController.login');
 //Agrupamos las rutas 
 Route.group(()=> {
   // Ruta del registroo nvo usuario
   Route.post('users/regis', 'UserController.store');
   Route.delete('users/delete/:id', 'UserController.destroy');
   //Ruta del Login
-  Route.post('users/login', 'UserController.login');
+  //Route.post('users/login', 'UserController.login');
   //Crea nva categoria
   Route.post('newCategory', 'CategoryProductController.store');
   Route.get('verus', 'CategoryProductController.index');
   
-  Route.post('newComment', 'ComentarioController.store');
-
   Route.get('/categorias', async () => {
     return await Database.table('category_products').select('*')
   })
   //Agrega nmnvo producto
   Route.post('Newproducts', 'ProductController.store');
+  //Comentarios agregar
+  Route.post('newComment', 'CommentController.com')
   //Muesta productos
   Route.get('productos', async () => {
     return await Database.table('products').select('*')
+  })
+  Route.get('comentarios', async () => {
+    return await Database.table('comments').select('*')
   })
   //Muestra los comentarios
   Route.get('comentarios', async () => {
