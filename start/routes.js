@@ -24,7 +24,7 @@ Route.get('/', () => {
 Route.get('/pepe', () => {
   return { greeting: 'Hello pepe in JSON' }
 })
-//Agrupamos las rutas 
+//Agrupamos las rutas
 Route.group(()=> {
   // Ruta del registroo nvo usuario
   Route.post('users/regis', 'UserController.store');
@@ -44,4 +44,7 @@ Route.group(()=> {
   Route.get('productos', async () => {
     return await Database.table('products').select('*')
   })
+  //CRUD Escuelas
+  Route.post('schools/new', 'SchoolController.create');
+  Route.get('schools/update/:id', 'SchoolController.update');
 }).prefix('api/')
