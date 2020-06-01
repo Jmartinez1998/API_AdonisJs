@@ -46,6 +46,9 @@ Route.group(()=> {
   Route.get('productos', async () => {
     return await Database.table('products').select('*')
   })
+   //CRUD Escuelas
+  Route.post('schools/new', 'SchoolController.create');
+  Route.get('schools/update/:id', 'SchoolController.update');
   //Muestra los comentarios
   Route.get('comentarios', async () => {
     return await Database.table('comentarios').select('*')
