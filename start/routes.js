@@ -26,7 +26,7 @@ Route.get('/pepe', () => {
 })
 Route.post('users/login', 'UserController.login');
 //Agrupamos las rutas
-Route.group(()=> {
+Route.group(() => {
   Route.post('users/login', 'UserController.login');
   // Ruta del registroo nvo usuario
   Route.post('users/regis', 'UserController.store');
@@ -59,8 +59,22 @@ Route.group(()=> {
   Route.get('comentarios', async () => {
     return await Database.table('comments').select('*')
   })
-   //CRUD Escuelas
+  //CRUD Escuelas
   Route.post('schools/new', 'SchoolController.create');
   Route.post('schools/update/:id', 'SchoolController.update');
    Route.delete('schools/delete/:id', 'SchoolController.destroy');
 }).prefix('api/').middleware(['auth']);;
+  Route.delete('schools/delete/:id', 'SchoolController.destroy');
+  //Muestra los comentarios
+  Route.get('comentarios', async () => {
+    return await Database.table('comentarios').select('*')
+  }).prefix('api/').middleware(['auth']);;//eto chi
+
+//jesus Rutas we
+Route.group(() => {
+  Route.post('New', 'PackController.Store')
+  Route.get('Take', 'PackController.getAllPack')
+  Route.put('Update', 'PackController.Update')
+  Route.delete('Delete', 'PackController.Delete')
+
+}).prefix('Packs/').middleware(['auth']);
