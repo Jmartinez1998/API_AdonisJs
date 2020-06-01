@@ -35,6 +35,8 @@ Route.group(()=> {
   Route.post('newCategory', 'CategoryProductController.store');
   Route.get('verus', 'CategoryProductController.index');
 
+  Route.post('newComment', 'ComentarioController.store');
+
   Route.get('/categorias', async () => {
     return await Database.table('category_products').select('*')
   })
@@ -44,7 +46,8 @@ Route.group(()=> {
   Route.get('productos', async () => {
     return await Database.table('products').select('*')
   })
-  //CRUD Escuelas
-  Route.post('schools/new', 'SchoolController.create');
-  Route.get('schools/update/:id', 'SchoolController.update');
-}).prefix('api/')
+  //Muestra los comentarios
+  Route.get('comentarios', async () => {
+    return await Database.table('comentarios').select('*')
+  })
+}).prefix('api/').middleware(['auth']);
