@@ -24,10 +24,9 @@ Route.get('/', () => {
 Route.get('/pepe', () => {
   return { greeting: 'Hello pepe in JSON' }
 })
-Route.post('users/login', 'UserController.login');
 //Agrupamos las rutas 
-//Agrupamos las rutas
 Route.group(()=> {
+  Route.post('users/login', 'UserController.login');
   // Ruta del registroo nvo usuario
   Route.post('users/regis', 'UserController.store');
   Route.delete('users/delete/:id', 'UserController.destroy');
