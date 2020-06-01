@@ -24,8 +24,12 @@ Route.get('/', () => {
 Route.get('/pepe', () => {
   return { greeting: 'Hello pepe in JSON' }
 })
+<<<<<<< HEAD
 Route.post('users/login', 'UserController.login');
 //Agrupamos las rutas 
+=======
+//Agrupamos las rutas
+>>>>>>> 094eec7ea80d35695b1986a7cbf2f8e1930884d8
 Route.group(()=> {
   // Ruta del registroo nvo usuario
   Route.post('users/regis', 'UserController.store');
@@ -35,7 +39,13 @@ Route.group(()=> {
   //Crea nva categoria
   Route.post('newCategory', 'CategoryProductController.store');
   Route.get('verus', 'CategoryProductController.index');
+<<<<<<< HEAD
   
+=======
+
+  Route.post('newComment', 'ComentarioController.store');
+
+>>>>>>> 094eec7ea80d35695b1986a7cbf2f8e1930884d8
   Route.get('/categorias', async () => {
     return await Database.table('category_products').select('*')
   })
@@ -47,9 +57,15 @@ Route.group(()=> {
   Route.get('productos', async () => {
     return await Database.table('products').select('*')
   })
+<<<<<<< HEAD
   Route.get('comentarios', async () => {
     return await Database.table('comments').select('*')
   })
+=======
+   //CRUD Escuelas
+  Route.post('schools/new', 'SchoolController.create');
+  Route.get('schools/update/:id', 'SchoolController.update');
+>>>>>>> 094eec7ea80d35695b1986a7cbf2f8e1930884d8
   //Muestra los comentarios
   Route.get('comentarios', async () => {
     return await Database.table('comentarios').select('*')
