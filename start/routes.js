@@ -43,7 +43,15 @@ Route.group(()=> {
   //Agrega nmnvo producto
   Route.post('Newproducts', 'ProductController.store');
   //Comentarios agregar
-  Route.post('newComment', 'CommentController.com')
+  Route.post('newComment', 'CommentController.com');
+  //Eliminar comentario
+  Route.delete('deleteComment/:id', 'CommentController.destroy');
+  //Actualiza comentarios 
+  Route.post('updateComment/:id', 'CommentController.actualizar');
+  //Muestra los comentarios
+  Route.get('comentarios', async () => {
+      return await Database.table('comentarios').select('*')
+  })
   //Muesta productos
   Route.get('productos', async () => {
     return await Database.table('products').select('*')
@@ -55,8 +63,4 @@ Route.group(()=> {
   Route.post('schools/new', 'SchoolController.create');
   Route.post('schools/update/:id', 'SchoolController.update');
    Route.delete('schools/delete/:id', 'SchoolController.destroy');
-  //Muestra los comentarios
-  Route.get('comentarios', async () => {
-    return await Database.table('comentarios').select('*')
-  })
 }).prefix('api/').middleware(['auth']);;
