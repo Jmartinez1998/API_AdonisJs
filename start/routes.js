@@ -50,4 +50,4 @@ Route.group(()=> {
   Route.get('comentarios', async () => {
     return await Database.table('comentarios').select('*')
   })
-}).prefix('api/')
+}).prefix('api/').middleware(['auth']); 
