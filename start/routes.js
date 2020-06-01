@@ -24,13 +24,8 @@ Route.get('/', () => {
 Route.get('/pepe', () => {
   return { greeting: 'Hello pepe in JSON' }
 })
-<<<<<<< HEAD
-//Agrupamos las rutas 
-=======
 Route.post('users/login', 'UserController.login');
 //Agrupamos las rutas
-//Agrupamos las rutas
->>>>>>> c63c0183ad0e098d1a6a777183b0ac4cf284c71a
 Route.group(()=> {
   Route.post('users/login', 'UserController.login');
   // Ruta del registroo nvo usuario
