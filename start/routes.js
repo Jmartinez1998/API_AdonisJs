@@ -37,9 +37,6 @@ Route.group(()=> {
   Route.post('newCategory', 'CategoryProductController.store');
   Route.get('verus', 'CategoryProductController.index');
   
-
-  Route.post('newComment', 'ComentarioController.store');
-
   Route.get('/categorias', async () => {
     return await Database.table('category_products').select('*')
   })
