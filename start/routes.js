@@ -48,6 +48,9 @@ Route.group(()=> {
   Route.get('productos', async () => {
     return await Database.table('products').select('*')
   })
+  //Delete product
+  Route.delete('deleteProd/:id','ProductController.deleteProduct');
+  // Update products
   Route.get('comentarios', async () => {
     return await Database.table('comments').select('*')
   })
