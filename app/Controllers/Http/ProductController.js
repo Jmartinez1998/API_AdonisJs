@@ -9,8 +9,30 @@ class ProductController {
             category_id,
             Description
         });
-
-        return response.ok(producto);
+        try{
+            return response.json({
+                "status": 
+                {
+                    "type": "success",
+                    "message": "Product add successfully",
+                    "code": 200,
+                },
+                "data": [
+                    producto
+                ]
+            })
+        }
+        catch(error) {
+            return response.json({
+                "status": 
+                {
+                    "type": "Bad Request",
+                    "message": "Your product could not be add",
+                    "code": 400,
+                }
+            });
+        }
+        //return response.ok(producto);
     };
 }
 
