@@ -42,8 +42,12 @@ async update({ params:{id} ,request,response }) {
 };
  // Desrtoy userSelect
  async destroy({response, params:id,}) {
-  const school = await School.find(id)
-      await school.delete()
+  //const school = await School.find(id)
+     // await school.delete()
+      const school = await Database
+      .table('schools')
+      .where('id', id)
+      .delete()
       return response.status(200).send({message:'Escuela eliminada'});
 }
 }

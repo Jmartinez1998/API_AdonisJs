@@ -30,7 +30,7 @@ Route.post('users/login', 'UserController.login');
 Route.group(()=> {
   // Ruta del registroo nvo usuario
   Route.post('users/regis', 'UserController.store');
-
+  Route.delete('users/delete/:id', 'UserController.destroy');
   //Ruta del Login
   //Route.post('users/login', 'UserController.login');
   //Crea nva categoria
@@ -40,7 +40,7 @@ Route.group(()=> {
   Route.get('/categorias', async () => {
     return await Database.table('category_products').select('*')
   })
-  //Agrega nmnvo productoRoute.delete('users/delete/:id', 'UserController.destroy');
+  //Agrega nmnvo producto
   Route.post('Newproducts', 'ProductController.store');
   //Comentarios agregar
   Route.post('newComment', 'CommentController.com')
