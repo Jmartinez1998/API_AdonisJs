@@ -54,9 +54,9 @@ Route.group(()=> {
    //CRUD Escuelas
   Route.post('schools/new', 'SchoolController.create');
   Route.post('schools/update/:id', 'SchoolController.update');
-  Route.delete('schools/delete/:id', 'SchoolController.destroy');
+   Route.delete('schools/delete/:id', 'SchoolController.destroy');
   //Muestra los comentarios
   Route.get('comentarios', async () => {
     return await Database.table('comentarios').select('*')
   })
-}).prefix('api/');
+}).prefix('api/').middleware(['auth']);;
