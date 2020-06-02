@@ -5,12 +5,11 @@ const Database = use('Database');
 
 class PackController {
 
-    async getAllPack() //todo
+    async getAllPack() //Traer todo
     {
         return await Database.select('*').from('packs')
     }
-
-    async Store({ request }) //rregtra
+    async Store({ request }) //registrar un paqeute
     {
         const { packagetype, description, cost, status } = request.all();
         //console.log(packagetype, description, cost, status);
@@ -22,22 +21,8 @@ class PackController {
         });
         return packs;
     };
-
-    /*
-         async Delete({ request, auth }) {
-        const user = await auth.getUser();
-        const { id } = params;
-        const proyectos = await proyectos.find(email);
-        const affectedRows = await Database
-            .table('user')
-            .where('email', this.login('email'))
-            .delete()
-    };
-    */
-
-    async Delete({ params: { id }, request, response }) //delete
+    async Delete({ params: { id }, request, response }) //eliminar paquete
     {
-       // const { id } = params;
         const packs = await Database
             .table('packs')
             .where('id', id)
@@ -45,8 +30,7 @@ class PackController {
 
         return await Database.select('*').from('packs');
     }
-
-    async Update({ params: { id }, request, response }) //update
+    async Update({ params: { id }, request, response }) //Actualisar el paquete
     {
         const { packagetype, description, cost, status } = request.all();
         console.log(packagetype, description, cost, status);
