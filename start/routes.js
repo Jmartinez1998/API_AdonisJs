@@ -53,6 +53,9 @@ Route.group(() => {
  //CRUD Escuelas
  Route.post('cities/new', 'CityController.create');
  Route.get('cities/update/:id', 'CityController.update');
+ Route.get('ciudades', async () => {
+  return await Database.table('cities').select('*')
+})
 
   //Delete product
   Route.delete('deleteProd/:id','ProductController.deleteProduct');
@@ -71,8 +74,8 @@ Route.group(() => {
   Route.get('comentarios', async () => {
       return await Database.table('comments').select('*')
   })
-}).prefix('api/');
-//}).prefix('api/').middleware(['auth']);
+}).prefix('api/').middleware(['auth']);
+//}).prefix('api/')
   //CRUD Escuelas
   Route.post('schools/new', 'SchoolController.create');
   Route.post('schools/update/:id', 'SchoolController.update');
