@@ -50,7 +50,7 @@ Route.group(() => {
   Route.post('updateComment/:id', 'CommentController.actualizar');
   //Muestra los comentarios
   Route.get('comentarios', async () => {
-      return await Database.table('comentarios').select('*')
+      return await Database.table('comments').select('*')
   })
   //Muesta productos
   Route.get('productos', async () => {
