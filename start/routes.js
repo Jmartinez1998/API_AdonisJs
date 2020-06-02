@@ -49,8 +49,14 @@ Route.group(()=> {
    //CRUD Escuelas
   Route.post('schools/new', 'SchoolController.create');
   Route.get('schools/update/:id', 'SchoolController.update');
+
+ //CRUD Escuelas
+ Route.post('cities/new', 'CityController.create');
+ Route.get('cities/update/:id', 'CityController.update');
+
   //Muestra los comentarios
   Route.get('comentarios', async () => {
     return await Database.table('comentarios').select('*')
   })
-}).prefix('api/').middleware(['auth']);
+}).prefix('api/');
+//}).prefix('api/').middleware(['auth']);
