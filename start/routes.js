@@ -24,12 +24,12 @@ Route.get('/', () => {
 Route.get('/pepe', () => {
   return { greeting: 'Hello pepe in JSON' }
 })
+//Route login
 Route.post('users/login', 'UserController.login');
+// Ruta del registroo nvo usuario
+  Route.post('users/regis', 'UserController.store');
 //Agrupamos las rutas
 Route.group(() => {
-  Route.post('users/login', 'UserController.login');
-  // Ruta del registroo nvo usuario
-  Route.post('users/regis', 'UserController.store');
   Route.delete('users/delete/:id', 'UserController.destroy');
   //Ruta del Login
   //Route.post('users/login', 'UserController.login');
@@ -42,6 +42,17 @@ Route.group(() => {
   })
   //Agrega nmnvo producto
   Route.post('Newproducts', 'ProductController.store');
+  //Muesta productos
+  Route.get('productos', async () => {
+    return await Database.table('products').select('*')
+  })
+  //Delete product
+  Route.delete('deleteProd/:id','ProductController.deleteProduct');
+  // Update products
+  Route.get('comentarios', async () => {
+    return await Database.table('comments').select('*')
+  })
+  /**/
   //Comentarios agregar
   Route.post('newComment', 'CommentController.com');
   //Eliminar comentario
@@ -52,18 +63,11 @@ Route.group(() => {
   Route.get('comentarios', async () => {
       return await Database.table('comments').select('*')
   })
-  //Muesta productos
-  Route.get('productos', async () => {
-    return await Database.table('products').select('*')
-  })
-  Route.get('comentarios', async () => {
-    return await Database.table('comments').select('*')
-  })
   //CRUD Escuelas
   Route.post('schools/new', 'SchoolController.create');
   Route.post('schools/update/:id', 'SchoolController.update');
    Route.delete('schools/delete/:id', 'SchoolController.destroy');
-}).prefix('api/').middleware(['auth']);;
+}).prefix('api/').middleware(['auth']);
   Route.delete('schools/delete/:id', 'SchoolController.destroy');
   //Muestra los comentarios
   Route.get('comentarios', async () => {
