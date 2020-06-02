@@ -72,13 +72,13 @@ Route.group(() => {
   //Muestra los comentarios
   Route.get('comentarios', async () => {
     return await Database.table('comentarios').select('*')
-  }).prefix('api/').middleware(['auth']);;//eto chi
+  })//.prefix('api/').middleware(['auth']);;//eto chi
 
 //jesus Rutas we
 Route.group(() => {
   Route.post('New', 'PackController.Store')
   Route.get('Take', 'PackController.getAllPack')
-  Route.put('Update', 'PackController.Update')
-  Route.delete('Delete', 'PackController.Delete')
+  Route.put('Update/:id', 'PackController.Update')
+  Route.delete('Delete/:id', 'PackController.Delete')
 
-}).prefix('Packs/').middleware(['auth']);
+}).prefix('Packs/')//.middleware(['auth']);

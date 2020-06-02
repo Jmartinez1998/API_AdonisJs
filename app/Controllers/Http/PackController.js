@@ -1,13 +1,9 @@
 'use strict'
 
-const Packs = packs('App/Models/packs')
+const Packs = use('App/Models/pack');
+const Database = use('Database');
 
 class PackController {
-    /* datos
-    packagetype
-    description
-    cost
-    status*/
 
     async getAllPack() //todo
     {
@@ -17,25 +13,31 @@ class PackController {
     async Store({ request }) //rregtra
     {
         const { packagetype, description, cost, status } = request.all();
-        console.log(packagetype, description, cost, status);
+        //console.log(packagetype, description, cost, status);
         const packs = await Packs.create({
             packagetype,
             description,
             cost,
             status
         });
-        return Packs;
+        return packs;
     };
+
     async Delete({ response, params: id, }) //delete
     {
-        const packs = await Packs.find(id)
-        await packs.delete()
-        return response.status(200).send({ message: 'Package removed' });
+        const packs = await Database
+            .table('packs')
+            .where('id', id)
+            .delete()
+
+            
+        return await Database.select('*').from('packs');
     }
 
     async Update({ params: { id }, request, response }) //update
     {
         const { packagetype, description, cost, status } = request.all();
+        console.log(packagetype, description, cost, status);
         const packs = await Database
             .table('packs')
             .where('id', id)
@@ -50,6 +52,5 @@ class PackController {
         return response.status(200).send({ message: 'Package updated', data: New_packs })
 
     }
-
+}
 module.exports = PackController
-
