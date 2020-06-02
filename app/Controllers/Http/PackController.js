@@ -23,14 +23,26 @@ class PackController {
         return packs;
     };
 
-    async Delete({ response, params: id, }) //delete
+    /*
+         async Delete({ request, auth }) {
+        const user = await auth.getUser();
+        const { id } = params;
+        const proyectos = await proyectos.find(email);
+        const affectedRows = await Database
+            .table('user')
+            .where('email', this.login('email'))
+            .delete()
+    };
+    */
+
+    async Delete({ params: { id }, request, response }) //delete
     {
+       // const { id } = params;
         const packs = await Database
             .table('packs')
             .where('id', id)
             .delete()
 
-            
         return await Database.select('*').from('packs');
     }
 
@@ -50,7 +62,6 @@ class PackController {
         const Update_pack = await Packs.find(id)
         const New_packs = await Packs.query().where('id', id).fetch()
         return response.status(200).send({ message: 'Package updated', data: New_packs })
-
     }
 }
 module.exports = PackController
