@@ -1,12 +1,11 @@
 'use strict'
-const Packs = packs('App/Models/pack')
+const Packs = use('App/Models/pack');
+const Database = use('Database');
 
-/*
+class PackController // controller
+{
 
-*/
-
-class PackController {
-    async GetAllPacks()//Traer todo
+    async getAllPacks() //Traer todo
     {
         return await Database.select('*').from('packs')
     }
@@ -20,15 +19,16 @@ class PackController {
             cost,
             status
         });
-        return Packs;
+        return await Database.select('*').from('packs')
     }
     async Delete({ request, params: { id } }) //eliminar
     {
         const packs = await Packs.find(id)
-        await pack.delete()
+        await packs.delete()
         return await Database.select('*').from('packs')
     }
-    async Update({ params: { id }, request, response }) {
+    async Update({ params: { id }, request, response })// actualisar 
+    {
         const { packagetype, description, cost, status } = request.all();
         const packs = await Database
             .table('packs')

@@ -91,8 +91,10 @@ Route.group(() => {
 //jesus Rutas we
 Route.group(() => {
   Route.post('New', 'PackController.Store')
-  Route.get('Take', 'PackController.getAllPack')
+  Route.get('Take', 'PackController.getAllPacks')
   Route.put('Update/:id', 'PackController.Update')
   Route.delete('Delete/:id', 'PackController.Delete')
-//}).prefix('api/').middleware(['auth']);
 }).prefix('Packs/');//.middleware(['auth']);
+
+
+// http://127.0.0.1:3333/Packs/Take
